@@ -310,7 +310,7 @@ const Blog = () => {
                                         Blog Craftsy Box
                                     </h1>
                                     <p className="lead text-light">
-                                        Chia sẻ kiến thức, kinh nghiệm và câu chuyện về thế giới handmade
+                                        Chia sẻ kiến thức, kinh nghiệm và câu chuyện
                                     </p>
                                 </motion.div>
                             </Col>
