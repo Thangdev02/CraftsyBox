@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap"
-import { House, Grid3x3Gap, Telephone, InfoCircle, Journal, Cart, PersonCircle, Gear, Shop } from "react-bootstrap-icons"
+import { House, Grid3x3Gap, Telephone, InfoCircle, Journal, Cart, PersonCircle, Gear, CameraVideo } from "react-bootstrap-icons"
 import { useEffect, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 
@@ -90,6 +90,16 @@ const NavigationBar = () => {
             >
               <Shop className="me-1" />Cửa hàng
             </Nav.Link> */}
+            <Nav.Link
+              className={`nav-link-custom ${location.pathname === "/videos" ? "active" : ""}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation("/videos");
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              <CameraVideo className="me-1" /> Hướng dẫn
+            </Nav.Link>
 
             <Nav.Link
               className={`nav-link-custom ${location.pathname === "/about" ? "active" : ""}`}

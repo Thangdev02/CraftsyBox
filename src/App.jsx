@@ -35,6 +35,7 @@ import BlogManagementUser from "./components/Profile/BlogManagement";
 import ShopBlogManager from "./components/ShopBlogManager";
 import AdminBlogManager from "./components/AdminBlogManager";
 import RegisterShop from "./pages/RegisterShop/RegisterShop";
+import Videos from "./pages/video/video";
 
 
 const RoleEnum = {
@@ -117,6 +118,11 @@ const AppContent = () => {
               </PageTransition>
             }
           />
+          <Route path="/videos" element={
+            <PageTransition>
+              <Videos />
+            </PageTransition>
+          } />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route
             path="/contact"
