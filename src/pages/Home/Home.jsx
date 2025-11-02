@@ -78,18 +78,18 @@ const Home = () => {
                                 transition={{ duration: 0.8 }}
                             >
                                 <h1 className="display-4 fw-bold mb-4">
-                                    Khám Phá Thế Giới
+                                    Craftsy Box
                                     <br />
-                                    <span style={{ color: "#ffffff" }}>Handmade Độc Đáo</span>
+                                    <span style={{ color: "#ffffff" }}>Khám Phá Thế Giới Thủ Công Cho Gia Đình</span>
                                 </h1>
                                 <p className="lead mb-4" style={{ fontSize: "1.2rem", opacity: 0.9 }}>
-                                    Những sản phẩm thủ công tinh xảo được tạo ra với tình yêu và sự tận tâm.
-                                    Mỗi món đồ đều mang trong mình câu chuyện riêng và giá trị độc đáo.
+                                    Bộ kit sáng tạo lấy cảm hứng từ di sản Việt, an toàn cho người dùng và thân thiện môi trường.
+
                                 </p>
                                 <div className="d-flex gap-3">
                                     <Link to="/products">
                                         <Button className="btn-primary-custom" size="lg">
-                                            Khám Phá Ngay <ArrowRight className="ms-2" />
+                                            Xem chi tiết<ArrowRight className="ms-2" />
                                         </Button>
                                     </Link>
                                     <Link to="/products">
@@ -157,10 +157,10 @@ const Home = () => {
                                 >
                                     <Heart size={32} color="white" />
                                 </div>
-                                <h4 className="fw-bold mb-3">Làm Bằng Tình Yêu</h4>
+                                <h4 className="fw-bold mb-3">Trải nghiệm có câu chuyện</h4>
                                 <p className="text-muted">
-                                    Mỗi sản phẩm được chế tác với tình yêu và sự tận tâm, mang đến cho bạn những trải nghiệm đặc biệt
-                                    nhất.
+                                    Hộp kit biến người dùng thành người kể chuyện: bao bì chỉn chu, in màu sắc sống động, QR và nội dung đa giác quan.
+
                                 </p>
                             </motion.div>
                         </Col>
@@ -183,10 +183,10 @@ const Home = () => {
                                 >
                                     <Award size={32} color="white" />
                                 </div>
-                                <h4 className="fw-bold mb-3">Chất Lượng Cao</h4>
+                                <h4 className="fw-bold mb-3">Hành trình trải nghiệm</h4>
                                 <p className="text-muted">
-                                    Chúng tôi chỉ sử dụng những nguyên liệu tốt nhất và áp dụng quy trình sản xuất nghiêm ngặt để đảm bảo
-                                    chất lượng.
+                                    Khám phá → Hiểu nguồn gốc → Thực hành → Hoàn thiện → Bảo quản & Chia sẻ. Mỗi bước có video, vật liệu chất lượng và hướng dẫn rõ ràng.
+
                                 </p>
                             </motion.div>
                         </Col>
@@ -209,9 +209,10 @@ const Home = () => {
                                 >
                                     <Star size={32} color="white" />
                                 </div>
-                                <h4 className="fw-bold mb-3">Độc Đáo & Đặc Biệt</h4>
+                                <h4 className="fw-bold mb-3">Giá trị bền vững & cá nhân hóa</h4>
                                 <p className="text-muted">
-                                    Mỗi sản phẩm đều có thiết kế độc đáo, không trùng lặp, giúp bạn thể hiện phong cách riêng biệt.
+                                    Sản phẩm là kỷ vật văn hóa: nguồn gốc minh bạch, tùy chọn khắc tên/phiên bản giới hạn, refill và hướng dẫn bảo quản
+
                                 </p>
                             </motion.div>
                         </Col>
@@ -334,13 +335,15 @@ const Home = () => {
                             <h2 className="display-5 fw-bold mb-3" style={{ color: "#2c3e50" }}>
                                 Khách Hàng Nói Gì?
                             </h2>
+
                             <p className="lead text-muted">Cảm nhận từ những khách hàng thân thiết</p>
                         </Col>
                     </Row>
                     <Row>
                         <Col md={4}>
                             <Card className="p-4 shadow-sm h-100">
-                                <Card.Text>"Sản phẩm cực kỳ tinh xảo, mình rất ưng ý!"</Card.Text>
+
+                                <Card.Text>"Hoạt động cuối tuần tuyệt vời cho bé và ba mẹ — ý nghĩa và vui"</Card.Text>
                                 <div className="d-flex align-items-center mt-3">
                                     <img
                                         src="https://i.pravatar.cc/60?img=12"
@@ -349,13 +352,13 @@ const Home = () => {
                                         width="50"
                                         height="50"
                                     />
-                                    <h6 className="fw-bold mb-0">Nguyễn Lan</h6>
+                                    <h6 className="fw-bold mb-0"> Minh An</h6>
                                 </div>
                             </Card>
                         </Col>
                         <Col md={4}>
                             <Card className="p-4 shadow-sm h-100">
-                                <Card.Text>"Giao hàng nhanh, đóng gói cẩn thận, 5 sao!"</Card.Text>
+                                <Card.Text>“Chất liệu an toàn, hướng dẫn dễ theo. Sản phẩm hoàn thiện đẹp.”</Card.Text>
                                 <div className="d-flex align-items-center mt-3">
                                     <img
                                         src="https://i.pravatar.cc/60?img=20"
@@ -364,13 +367,14 @@ const Home = () => {
                                         width="50"
                                         height="50"
                                     />
-                                    <h6 className="fw-bold mb-0">Trần Minh</h6>
+                                    <h6 className="fw-bold mb-0"> Lan Hương
+                                    </h6>
                                 </div>
                             </Card>
                         </Col>
                         <Col md={4}>
                             <Card className="p-4 shadow-sm h-100">
-                                <Card.Text>"Độc đáo, không trùng lặp, sẽ ủng hộ tiếp."</Card.Text>
+                                <Card.Text>“Mua cho lớp học, trẻ thích và học được nhiều kỹ năng.”</Card.Text>
                                 <div className="d-flex align-items-center mt-3">
                                     <img
                                         src="https://i.pravatar.cc/60?img=33"
@@ -379,7 +383,7 @@ const Home = () => {
                                         width="50"
                                         height="50"
                                     />
-                                    <h6 className="fw-bold mb-0">Hoàng Thảo</h6>
+                                    <h6 className="fw-bold mb-0"> Phạm Nam</h6>
                                 </div>
                             </Card>
                         </Col>
@@ -393,7 +397,7 @@ const Home = () => {
             {/* Gallery Section */}
             <section className="section-padding">
                 <Container>
-                    <Row className="text-center mb-5">
+                    <Row className="text-center mb-2">
                         <Col>
                             <h2 className="display-5 fw-bold mb-3" style={{ color: "#2c3e50" }}>
                                 Bộ Sưu Tập Hình Ảnh
@@ -401,18 +405,18 @@ const Home = () => {
                             <p className="lead text-muted">Một vài khoảnh khắc được yêu thích</p>
                         </Col>
                     </Row>
-                    <Row className="g-3">
-                        {[1, 2, 3, 4, 5, 6].map((i) => (
-                            <Col xs={6} md={4} key={i}>
-                                <motion.img
-                                    src={`/images/gallery-${i}.jpg`}
-                                    alt={`Gallery ${i}`}
-                                    className="img-fluid rounded-3 gallery-img"
-                                    style={{ width: "100%", height: '300px' }}
-                                    whileHover={{ scale: 1.05 }}
-                                />
-                            </Col>
-                        ))}
+
+                    {/* Thay 6 ảnh bằng 1 ảnh lớn */}
+                    <Row className=" justify-content-center">
+                        <Col xs={12} md={10} lg={8} className="text-center">
+                            <motion.img
+                                src={`/images/abcde.jpg`} // đổi tên file nếu cần
+                                alt="Gallery main"
+                                className="img-fluid rounded-3"
+                                style={{ width: "100%", height: "70%", maxHeight: "600px", objectFit: "cover" }}
+                                whileHover={{ scale: 1.02 }}
+                            />
+                        </Col>
                     </Row>
                 </Container>
             </section>
