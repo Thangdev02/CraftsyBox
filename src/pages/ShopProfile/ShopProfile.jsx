@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Container, Row, Col, Card, Button, Form, Modal, Alert, Badge, Spinner, Tab, Tabs } from 'react-bootstrap';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Container, Row, Col, Card, Button, Form, Modal, Alert, Badge, Spinner, Tab, Tabs, InputGroup } from 'react-bootstrap';
 import { PencilFill, StarFill, GeoAltFill, TelephoneFill, EnvelopeFill, CalendarFill } from 'react-bootstrap-icons';
 import { getShopByOwner, editShopInfo } from '../../api/shop';
 import { editProfile } from '../../api/auth';
+import { uploadMultipleFilesUser } from '../../api/upload';
 import BankManagement from '../../components/BankManagement/BankManagement';
 import OrderStatistics from '../../components/OrderStatistics/OrderStatistics';
 import './Shopprofile.css';
+
+const BASE_API_URL = "https://weekly.eposh.io.vn/";
 
 const ShopProfile = () => {
     const [shopData, setShopData] = useState(null);
@@ -21,6 +24,12 @@ const ShopProfile = () => {
     const [activeTab, setActiveTab] = useState('profile');
 
     const token = localStorage.getItem('token');
+
+    // Refs + upload states for logo & cover
+    const logoInputRef = useRef();
+    const coverInputRef = useRef();
+    const [logoUploading, setLogoUploading] = useState(false);
+    const [coverUploading, setCoverUploading] = useState(false);
 
     const fetchShopData = useCallback(async () => {
         try {
@@ -127,6 +136,49 @@ const ShopProfile = () => {
         return new Date(dateString).toLocaleDateString('vi-VN');
     };
 
+    // Upload handlers
+    const handleLogoChange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setLogoUploading(true);
+        try {
+            const res = await uploadMultipleFilesUser({ files: [file] }, token);
+            if (res?.files?.[0]) {
+                const url = `${BASE_API_URL}${res.files[0]}`;
+                setEditForm(prev => ({ ...prev, logoUrl: url }));
+                setShopData(prev => ({ ...prev, logoUrl: url }));
+            } else {
+                setError('Không thể tải logo lên');
+            }
+        } catch (err) {
+            console.error('Logo upload error:', err);
+            setError('Tải logo thất bại');
+        } finally {
+            setLogoUploading(false);
+        }
+    };
+
+    const handleCoverChange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setCoverUploading(true);
+        try {
+            const res = await uploadMultipleFilesUser({ files: [file] }, token);
+            if (res?.files?.[0]) {
+                const url = `${BASE_API_URL}${res.files[0]}`;
+                setEditForm(prev => ({ ...prev, coverImageUrl: url }));
+                setShopData(prev => ({ ...prev, coverImageUrl: url }));
+            } else {
+                setError('Không thể tải ảnh bìa lên');
+            }
+        } catch (err) {
+            console.error('Cover upload error:', err);
+            setError('Tải ảnh bìa thất bại');
+        } finally {
+            setCoverUploading(false);
+        }
+    };
+
     if (loading) {
         return (
             <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '60vh' }}>
@@ -200,7 +252,7 @@ const ShopProfile = () => {
                 >
                     <Tab eventKey="profile" title="Thông tin shop">
                         <Row>
-                            <Col lg={8}>
+                            <Col lg={12}>
                                 {/* Shop Information Card */}
                                 <Card className="shop-info-card mb-4">
                                     <Card.Header className="d-flex justify-content-between align-items-center">
@@ -290,28 +342,7 @@ const ShopProfile = () => {
                                 </Card>
                             </Col>
 
-                            <Col lg={4}>
-                                {/* Quick Stats */}
-                                <Card className="stats-card mb-4">
-                                    <Card.Header>
-                                        <h5 className="mb-0">Thống kê nhanh</h5>
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <div className="stat-item">
-                                            <div className="stat-number">{shopData?.ratingAverage || 0}</div>
-                                            <div className="stat-label">Điểm đánh giá trung bình</div>
-                                        </div>
-                                        <div className="stat-item">
-                                            <div className="stat-number">0</div>
-                                            <div className="stat-label">Tổng số sản phẩm</div>
-                                        </div>
-                                        <div className="stat-item">
-                                            <div className="stat-number">0</div>
-                                            <div className="stat-label">Đơn hàng hoàn thành</div>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
+
                         </Row>
                     </Tab>
 
@@ -396,25 +427,71 @@ const ShopProfile = () => {
                                         required
                                     />
                                 </Form.Group>
+
+                                {/* Logo upload (user can paste URL or upload file) */}
                                 <Form.Group className="mb-3">
-                                    <Form.Label>URL Logo</Form.Label>
+                                    <Form.Label>Logo cửa hàng</Form.Label>
+                                    <InputGroup>
+                                        <Form.Control
+                                            type="url"
+                                            name="logoUrl"
+                                            value={editForm.logoUrl || ''}
+                                            onChange={handleInputChange}
+                                            placeholder="Hoặc dán URL logo tại đây"
+                                        />
+                                        <Button
+                                            variant="outline-secondary"
+                                            onClick={() => logoInputRef.current.click()}
+                                            disabled={logoUploading}
+                                        >
+                                            {logoUploading ? <Spinner animation="border" size="sm" /> : 'Tải lên'}
+                                        </Button>
+                                    </InputGroup>
                                     <Form.Control
-                                        type="url"
-                                        name="logoUrl"
-                                        value={editForm.logoUrl || ''}
-                                        onChange={handleInputChange}
-                                        placeholder="https://example.com/logo.png"
+                                        type="file"
+                                        accept="image/*"
+                                        ref={logoInputRef}
+                                        style={{ display: 'none' }}
+                                        onChange={handleLogoChange}
                                     />
+                                    {editForm.logoUrl && (
+                                        <div className="mt-2">
+                                            <img src={editForm.logoUrl} alt="Logo preview" style={{ maxWidth: 120, maxHeight: 80, objectFit: 'contain' }} onError={(e) => e.target.style.display = 'none'} />
+                                        </div>
+                                    )}
                                 </Form.Group>
+
+                                {/* Cover upload (user can paste URL or upload file) */}
                                 <Form.Group className="mb-3">
-                                    <Form.Label>URL Ảnh bìa</Form.Label>
+                                    <Form.Label>Ảnh bìa cửa hàng</Form.Label>
+                                    <InputGroup>
+                                        <Form.Control
+                                            type="url"
+                                            name="coverImageUrl"
+                                            value={editForm.coverImageUrl || ''}
+                                            onChange={handleInputChange}
+                                            placeholder="Hoặc dán URL ảnh bìa tại đây"
+                                        />
+                                        <Button
+                                            variant="outline-secondary"
+                                            onClick={() => coverInputRef.current.click()}
+                                            disabled={coverUploading}
+                                        >
+                                            {coverUploading ? <Spinner animation="border" size="sm" /> : 'Tải lên'}
+                                        </Button>
+                                    </InputGroup>
                                     <Form.Control
-                                        type="url"
-                                        name="coverImageUrl"
-                                        value={editForm.coverImageUrl || ''}
-                                        onChange={handleInputChange}
-                                        placeholder="https://example.com/cover.png"
+                                        type="file"
+                                        accept="image/*"
+                                        ref={coverInputRef}
+                                        style={{ display: 'none' }}
+                                        onChange={handleCoverChange}
                                     />
+                                    {editForm.coverImageUrl && (
+                                        <div className="mt-2">
+                                            <img src={editForm.coverImageUrl} alt="Cover preview" style={{ width: '100%', maxHeight: 140, objectFit: 'cover' }} onError={(e) => e.target.style.display = 'none'} />
+                                        </div>
+                                    )}
                                 </Form.Group>
                             </Col>
                         </Row>
