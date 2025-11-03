@@ -79,16 +79,13 @@ const AboutUs = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8 }}
                                 >
-                                    <h1 className="display-3 fw-bold mb-4 text-white">
-                                        Về Chúng Tôi
-                                    </h1>
                                     <h2 className="display-5 fw-semibold mb-3 text-white">
                                         Craftsy Nest - Khi di sản chạm vào đôi tay sáng tạo
                                     </h2>
                                     <p className="lead text-white mb-2" style={{ maxWidth: "800px", margin: "0 auto" }}>
-                                        Craftsy Nest ra đời để kết nối lại sợi dây giữa truyền thống và sáng tạo, để mỗi người trẻ hay mỗi em nhỏ đều có thể “chạm tay vào di sản” theo cách của riêng mình.
+                                        Tại Craftsy Nest, chúng tôi mang đến những bộ trải nghiệm thủ công lấy cảm hứng từ di sản làng nghề Việt Nam, giúp bạn có thể sáng tạo, học hỏi và khám phá văn hoá Việt một cách vui vẻ và gần gũi nhất.
                                     </p>
-                                    <div className="d-flex gap-3 justify-content-center flex-wrap mb-4">
+                                    <div className="d-flex gap-5 justify-content-center flex-wrap mb-4">
                                         <Button
                                             variant="light"
                                             size="lg"
