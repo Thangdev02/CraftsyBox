@@ -41,7 +41,7 @@ const NavigationBar = () => {
   };
 
   return (
-    <Navbar expand="lg" className="navbar-custom" fixed="top" key={`navbar-${Date.now()}`}>
+    <Navbar expand="lg" className="navbar-custom mb-20px" fixed="top" key={`navbar-${Date.now()}`}>
       <Container>
         <div
           style={{ width: "150px", height: "100px", cursor: "pointer" }}

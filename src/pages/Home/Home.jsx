@@ -61,7 +61,7 @@ const Home = () => {
     // Fetch shops (lấy 6 shop đang hoạt động, chỉ lấy tên và logo)
 
     return (
-        <div style={{ paddingTop: "80px" }}>
+        <div style={{ paddingTop: "130px" }}>
             {/* Hero Section */}
             <section className="hero-section position-relative overflow-hidden">
                 {/* Shapes */}

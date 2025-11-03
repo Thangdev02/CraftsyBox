@@ -29,7 +29,7 @@ const Videos = () => {
     const [playing, setPlaying] = useState(null);
 
     return (
-        <div style={{ paddingTop: 120, paddingBottom: 80 }}>
+        <div style={{ paddingTop: 200, paddingBottom: 80 }}>
             <Container>
                 <div className="text-center mb-10">
                     <h1 className="display-5 fw-bold" style={{ color: "#2c3e50" }}>
