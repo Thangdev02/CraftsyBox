@@ -65,7 +65,8 @@ const AboutUs = () => {
                     <div
                         className="position-absolute w-100 h-100"
                         style={{
-                            backgroundImage: "url('/images/craftsy-banner.jpg')",
+                            marginTop: "10px",
+                            backgroundImage: "url('/images/baner.jpg')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                             filter: "brightness(0.7)",
