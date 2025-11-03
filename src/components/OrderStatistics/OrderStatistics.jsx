@@ -41,7 +41,7 @@ const OrderStatistics = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     // eslint-disable-next-line no-unused-vars
-    const [orderData, setOrderData] = useState([]); // ✅ Sửa dòng này - thêm orderData
+    const [orderData, setOrderData] = useState([]);
     const [statistics, setStatistics] = useState({
         totalRevenue: 0,
         totalOrders: 0,
@@ -58,10 +58,9 @@ const OrderStatistics = () => {
     const fetchAllOrders = async () => {
         try {
             setLoading(true);
-            // Lấy tất cả orders (có thể cần call nhiều lần nếu có pagination)
             const response = await getOrdersByShop({
                 pageNumber: 1,
-                pageSize: 1000, // Lấy nhiều để có đủ data thống kê
+                pageSize: 1000,
                 filter: ''
             }, token);
 
@@ -82,21 +81,32 @@ const OrderStatistics = () => {
 
     // Tính toán thống kê
     const calculateStatistics = (orders) => {
-        const paidOrders = orders.filter(order => order.status === 'PAID' || order.status === 'Paid');
-        const completedOrders = orders.filter(order => order.status === 'Completed');
+        const normalize = (s) => (s || '').toString().toLowerCase();
 
-        // Tổng doanh thu từ các đơn đã thanh toán
-        const totalRevenue = paidOrders.reduce((sum, order) => sum + order.totalAmounts, 0);
+        // Xác định các trạng thái "paid" và "completed" (cả biến thể tiếng Việt "hoàn thành")
+        const isPaidStatus = (s) => s.includes('paid');
+        const isCompletedStatus = (s) => s.includes('completed') || s.includes('hoàn');
 
-        // Thống kê theo trạng thái
+        const paidOrders = orders.filter(order => isPaidStatus(normalize(order.status)));
+        const completedOrders = orders.filter(order => isCompletedStatus(normalize(order.status)));
+
+        // Doanh thu tính từ cả 2 loại trạng thái: Paid OR Completed
+        const revenueOrders = orders.filter(order => {
+            const s = normalize(order.status);
+            return isPaidStatus(s) || isCompletedStatus(s);
+        });
+
+        const totalRevenue = revenueOrders.reduce((sum, order) => sum + (Number(order.totalAmounts) || 0), 0);
+
+        // Thống kê theo trạng thái (giữ nguyên nhãn gốc)
         const statusBreakdown = orders.reduce((acc, order) => {
-            const status = order.status;
+            const status = order.status || 'Unknown';
             acc[status] = (acc[status] || 0) + 1;
             return acc;
         }, {});
 
-        // Doanh thu theo tháng (6 tháng gần nhất)
-        const monthlyRevenue = calculateMonthlyRevenue(paidOrders);
+        // Doanh thu theo tháng (6 tháng gần nhất) — tính từ revenueOrders
+        const monthlyRevenue = calculateMonthlyRevenue(revenueOrders);
 
         // Tính tăng trưởng (so với tháng trước)
         const revenueGrowth = calculateGrowthRate(monthlyRevenue);
@@ -113,53 +123,39 @@ const OrderStatistics = () => {
     };
 
     // Tính doanh thu theo tháng
-    const calculateMonthlyRevenue = (paidOrders) => {
+    const calculateMonthlyRevenue = (orders) => {
         const months = [];
         const now = new Date();
 
-        // Tạo 6 tháng gần nhất
         for (let i = 5; i >= 0; i--) {
             const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
             months.push({
+                key: `${date.getFullYear()}-${date.getMonth()}`,
                 month: date.toLocaleDateString('vi-VN', { month: 'short', year: 'numeric' }),
                 revenue: 0,
                 orders: 0
             });
         }
 
-        // Tính doanh thu cho từng tháng
-        paidOrders.forEach(order => {
+        orders.forEach(order => {
             const orderDate = new Date(order.createdDate);
-            const monthIndex = months.findIndex(m => {
-                const [monthName, year] = m.month.split(' ');
-                const monthNumber = getMonthNumber(monthName);
-                return orderDate.getMonth() === monthNumber &&
-                    orderDate.getFullYear() === parseInt(year);
-            });
-
-            if (monthIndex !== -1) {
-                months[monthIndex].revenue += order.totalAmounts;
-                months[monthIndex].orders += 1;
+            if (isNaN(orderDate)) return;
+            const key = `${orderDate.getFullYear()}-${orderDate.getMonth()}`;
+            const idx = months.findIndex(m => m.key === key);
+            if (idx !== -1) {
+                months[idx].revenue += Number(order.totalAmounts) || 0;
+                months[idx].orders += 1;
             }
         });
 
         return months;
     };
 
-    // Convert month name to number
-    const getMonthNumber = (monthName) => {
-        const months = ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6',
-            'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'];
-        return months.indexOf(monthName);
-    };
-
     // Tính tỷ lệ tăng trưởng
     const calculateGrowthRate = (monthlyData) => {
         if (monthlyData.length < 2) return 0;
-
         const currentMonth = monthlyData[monthlyData.length - 1].revenue;
         const previousMonth = monthlyData[monthlyData.length - 2].revenue;
-
         if (previousMonth === 0) return currentMonth > 0 ? 100 : 0;
         return ((currentMonth - previousMonth) / previousMonth * 100);
     };
@@ -282,8 +278,7 @@ const OrderStatistics = () => {
                                 <CashStack size={32} />
                             </div>
                             <h3 className="stat-value">{formatCurrency(statistics.totalRevenue)}</h3>
-                            <p className="stat-label">Tổng doanh thu</p>
-
+                            <p className="stat-label">Tổng doanh thu </p>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -342,7 +337,7 @@ const OrderStatistics = () => {
                         <Card.Header>
                             <h5 className="mb-0">
                                 <Calendar className="me-2" />
-                                Doanh thu 6 tháng gần nhất
+                                Doanh thu 6 tháng gần nhất (Paid + Completed)
                             </h5>
                         </Card.Header>
                         <Card.Body>
@@ -378,7 +373,7 @@ const OrderStatistics = () => {
                         <Card.Header>
                             <h5 className="mb-0">
                                 <BoxSeamFill className="me-2" />
-                                Số lượng đơn hàng theo tháng
+                                Số lượng đơn hàng theo tháng (Paid + Completed)
                             </h5>
                         </Card.Header>
                         <Card.Body>
