@@ -1,55 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DownOutlined, EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { uploadMultipleFilesUser } from "../../api/upload";
-import "./Register.css";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { register } from "../../api/auth";
-import { registerShop } from "../../api/shop";
-import ShopPolicyAgreement from "../../components/ShopPolicyAgreement";
-import { Modal } from "react-bootstrap";
-
-const roleOptions = [
-    { label: "Shop", value: "Shop" },
-    { label: "User", value: "User" },
-];
+import "./Register.css";
 
 const Register = () => {
-    const [step, setStep] = useState(1);
     const [form, setForm] = useState({
         userName: "",
         email: "",
         password: "",
         phoneNumber: "",
-        role: "User",
     });
     const [showPassword, setShowPassword] = useState(false);
-    const [shopForm, setShopForm] = useState({
-        name: "",
-        address: "",
-        phone: "",
-        email: "",
-        city: "",
-        province: "",
-        logoUrl: "",
-        coverImageUrl: "",
-        qrBanking: "",
-        userID: "",
-    });
-    const [userID, setUserID] = useState(""); // Lưu userID sau bước 1
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const [logoUploading, setLogoUploading] = useState(false);
-    const [coverUploading, setCoverUploading] = useState(false);
-    const logoInputRef = useRef();
-    const coverInputRef = useRef();
     const navigate = useNavigate();
 
-    // Thêm state cho modal điều khoản
-    const [showPolicyModal, setShowPolicyModal] = useState(false);
-    const [agreedPolicy, setAgreedPolicy] = useState(false);
-
     const handleChange = (e) => {
-        // Chỉ cho phép nhập số và tối đa 10 ký tự cho phoneNumber
         if (e.target.name === "phoneNumber") {
             const value = e.target.value.replace(/\D/g, "");
             if (value.length > 10) return;
@@ -60,18 +27,11 @@ const Register = () => {
         setError("");
     };
 
-    const handleRoleChange = (e) => {
-        setForm({ ...form, role: e.target.value });
-        setAgreedPolicy(false); // reset lại khi đổi vai trò
-    };
-
-    // Kiểm tra mật khẩu hợp lệ
     const validatePassword = (password) => {
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@!@#$%^&*])[A-Za-z\d@!@#$%^&*]{8,}$/;
         return regex.test(password);
     };
 
-    // Kiểm tra số điện thoại hợp lệ
     const validatePhone = (phone) => {
         return /^\d{10}$/.test(phone);
     };
@@ -95,130 +55,20 @@ const Register = () => {
             return;
         }
 
-        // Nếu là Shop, bắt buộc phải đồng ý điều khoản
-        if (form.role === "Shop" && !agreedPolicy) {
-            setError("Bạn cần đọc và đồng ý với Chính sách đăng ký Shop.");
-            return;
-        }
-
         setLoading(true);
         try {
             const res = await register(form);
-            let newUserID = "";
-            if (res && res.statusCode === 201 && res.data) {
-                if (typeof res.data === "object" && res.data.id) {
-                    newUserID = res.data.id;
-                } else if (typeof res.data === "string") {
-                    newUserID = res.data;
-                }
-                if (form.role === "Shop") {
-                    setUserID(newUserID); // Lưu userID
-                    setShopForm({
-                        ...shopForm,
-                        email: form.email,
-                        phone: form.phoneNumber,
-                        userID: newUserID, // Đảm bảo userID được lưu
-                    });
-                    setStep(2);
-                } else {
-                    navigate("/login");
-                }
+            if (res && (res.statusCode === 200 || res.statusCode === 201)) {
+                navigate("/login");
             } else {
                 setError(res?.message || "Đăng ký thất bại!");
             }
             // eslint-disable-next-line no-unused-vars
         } catch (err) {
             setError("Có lỗi xảy ra. Vui lòng thử lại!");
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
-    };
-
-    const handleShopChange = (e) => {
-        // Chỉ cho phép nhập số và tối đa 10 ký tự cho phone
-        if (e.target.name === "phone") {
-            const value = e.target.value.replace(/\D/g, "");
-            if (value.length > 10) return;
-            setShopForm({ ...shopForm, phone: value });
-        } else {
-            setShopForm({ ...shopForm, [e.target.name]: e.target.value });
-        }
-        setError("");
-    };
-
-    // Xử lý upload logo
-    const handleLogoUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        setLogoUploading(true);
-        try {
-            const res = await uploadMultipleFilesUser({ files: [file] });
-            if (res?.files?.[0]) {
-                setShopForm((prev) => ({
-                    ...prev,
-                    logoUrl: res.files[0].startsWith("http")
-                        ? res.files[0]
-                        : `https://weekly.eposh.io.vn/${res.files[0]}`
-                }));
-            }
-        } catch {
-            alert("Tải logo thất bại!");
-        }
-        setLogoUploading(false);
-    };
-
-    // Xử lý upload ảnh bìa
-    const handleCoverUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        setCoverUploading(true);
-        try {
-            const res = await uploadMultipleFilesUser({ files: [file] });
-            if (res?.files?.[0]) {
-                setShopForm((prev) => ({
-                    ...prev,
-                    coverImageUrl: res.files[0].startsWith("http")
-                        ? res.files[0]
-                        : `https://weekly.eposh.io.vn/${res.files[0]}`
-                }));
-            }
-        } catch {
-            alert("Tải ảnh bìa thất bại!");
-        }
-        setCoverUploading(false);
-    };
-
-    const handleShopSubmit = async (e) => {
-        e.preventDefault();
-        setError("");
-        if (!shopForm.name || !shopForm.address || !shopForm.phone || !shopForm.email) {
-            setError("Vui lòng nhập đầy đủ thông tin shop!");
-            return;
-        }
-        if (!validatePhone(shopForm.phone)) {
-            setError("Số điện thoại shop phải gồm đúng 10 chữ số.");
-            return;
-        }
-        setLoading(true);
-        try {
-            const token = "";
-            const payload = { ...shopForm, userID: shopForm.userID || userID };
-            const res = await registerShop(payload, token);
-            if (res && res.statusCode === 200) {
-                navigate("/login");
-            } else {
-                setError(res?.message || "Đăng ký shop thất bại!");
-            }
-            // eslint-disable-next-line no-unused-vars
-        } catch (err) {
-            setError("Có lỗi xảy ra. Vui lòng thử lại!");
-        }
-        setLoading(false);
-    };
-
-    // Khi đồng ý điều khoản trong modal
-    const handleAgreePolicy = () => {
-        setAgreedPolicy(true);
-        setShowPolicyModal(false);
     };
 
     return (
@@ -228,261 +78,74 @@ const Register = () => {
                 <div className="login-shape login-shape-2"></div>
                 <div className="login-shape login-shape-3"></div>
 
-                {step === 1 ? (
-                    <>
-                        <h2 className="login-title">Đăng Ký Tài Khoản</h2>
-                        <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
-                            <label htmlFor="userName">Tên đăng nhập</label>
-                            <input
-                                id="userName"
-                                name="userName"
-                                type="text"
-                                placeholder="Nhập tên đăng nhập"
-                                value={form.userName}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="email">Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="Nhập email"
-                                value={form.email}
-                                onChange={handleChange}
-                            />
+                <h2 className="login-title">Đăng Ký Tài Khoản</h2>
+                <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
+                    <label htmlFor="userName">Tên đăng nhập</label>
+                    <input
+                        id="userName"
+                        name="userName"
+                        type="text"
+                        placeholder="Nhập tên đăng nhập"
+                        value={form.userName}
+                        onChange={handleChange}
+                    />
 
-                            <label htmlFor="password">Mật khẩu</label>
-                            <div className="password-field">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder="Nhập mật khẩu"
-                                    value={form.password}
-                                    onChange={handleChange}
-                                />
-                                <span
-                                    className="password-toggle"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                >
-                                    {showPassword ? <EyeTwoTone /> : <EyeInvisibleOutlined />}
-                                </span>
-                            </div>
-                            <div style={{ fontSize: 13, color: "#1976d2", marginBottom: 8 }}>
-                                Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và ký tự đặc biệt (@!@#$%^&*).
-                            </div>
-                            <label htmlFor="phoneNumber">Số điện thoại</label>
-                            <input
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                type="text"
-                                placeholder="Nhập số điện thoại"
-                                value={form.phoneNumber}
-                                onChange={handleChange}
-                                maxLength={10}
-                                inputMode="numeric"
-                                pattern="\d*"
-                            />
+                    <label htmlFor="email">Email</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Nhập email"
+                        value={form.email}
+                        onChange={handleChange}
+                    />
 
-                            <label htmlFor="role">Vai trò</label>
-                            <div style={{ position: "relative", marginBottom: 16 }}>
-                                <select
-                                    id="role"
-                                    name="role"
-                                    value={form.role}
-                                    onChange={handleRoleChange}
-                                    style={{
-                                        width: "100%",
-                                        padding: "8px 36px 8px 12px",
-                                        border: "1px solid #ccc",
-                                        borderRadius: 6,
-                                        fontSize: 16,
-                                        background: "#fff",
-                                        color: "#333",
-                                        outline: "none",
-                                        appearance: "none",
-                                        cursor: "pointer"
-                                    }}
-                                >
-                                    {roleOptions.map(opt => (
-                                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                    ))}
-                                </select>
-                                <DownOutlined
-                                    style={{
-                                        position: "absolute",
-                                        right: 12,
-                                        top: "50%",
-                                        transform: "translateY(-50%)",
-                                        pointerEvents: "none",
-                                        color: "#888",
-                                        fontSize: 16
-                                    }}
-                                />
-                            </div>
-                            {/* Nếu chọn Shop thì hiện link đọc điều khoản */}
-                            {form.role === "Shop" && (
-                                <div className="mb-3 mt-2">
-                                    <span style={{ color: "#1976d2", cursor: "pointer", textDecoration: "underline" }}
-                                        onClick={() => setShowPolicyModal(true)}
-                                    >
-                                        Đọc Chính sách đăng ký Shop và Điều khoản sử dụng của HMall
-                                    </span>
-                                    <br />
-                                    <label className="mt-2" style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                        <input
-                                            type="checkbox"
-                                            checked={agreedPolicy}
-                                            onChange={e => setAgreedPolicy(e.target.checked)}
-                                            disabled
-                                            style={{ accentColor: "#1976d2" }}
-                                        />
-                                        <span style={{ fontSize: 14, color: "#1976d2" }}>
-                                            Tôi đã đọc, hiểu và đồng ý với Chính sách đăng ký Shop và Điều khoản sử dụng của HMall.
-                                        </span>
-                                    </label>
-                                </div>
-                            )}
+                    <label htmlFor="password">Mật khẩu</label>
+                    <div className="password-field">
+                        <input
+                            id="password"
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Nhập mật khẩu"
+                            value={form.password}
+                            onChange={handleChange}
+                        />
+                        <span
+                            className="password-toggle"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <EyeTwoTone /> : <EyeInvisibleOutlined />}
+                        </span>
+                    </div>
+                    <div style={{ fontSize: 13, color: "#1976d2", marginBottom: 8 }}>
+                        Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và ký tự đặc biệt (@!@#$%^&*).
+                    </div>
 
-                            {error && (
-                                <div style={{ color: "#e74c3c", marginBottom: 8, fontSize: "14px" }}>{error}</div>
-                            )}
+                    <label htmlFor="phoneNumber">Số điện thoại</label>
+                    <input
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        type="text"
+                        placeholder="Nhập số điện thoại"
+                        value={form.phoneNumber}
+                        onChange={handleChange}
+                        maxLength={10}
+                        inputMode="numeric"
+                        pattern="\d*"
+                    />
 
-                            <button className="login-btn" type="submit" disabled={loading}>
-                                {loading ? "Đang đăng ký..." : "Đăng Ký"}
-                            </button>
-                        </form>
+                    {error && (
+                        <div style={{ color: "#e74c3c", marginBottom: 8, fontSize: "14px" }}>{error}</div>
+                    )}
 
-                        <a className="login-link" href="/login">
-                            Đã có tài khoản? Đăng nhập
-                        </a>
+                    <button className="login-btn" type="submit" disabled={loading}>
+                        {loading ? "Đang đăng ký..." : "Đăng Ký"}
+                    </button>
+                </form>
 
-                        {/* Modal điều khoản */}
-                        <Modal show={showPolicyModal} onHide={() => setShowPolicyModal(false)} size="lg" centered>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Chính sách đăng ký Shop & Điều khoản sử dụng HMall</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <ShopPolicyAgreement onAgree={handleAgreePolicy} />
-                            </Modal.Body>
-                        </Modal>
-                    </>
-                ) : (
-                    <>
-                        <h2 className="login-title">Đăng Ký Shop</h2>
-                        <form className="register-form" onSubmit={handleShopSubmit} autoComplete="off">
-                            <div className="row">
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="name">Tên shop</label>
-                                    <input id="name" name="name" type="text" placeholder="Nhập tên shop" value={shopForm.name} onChange={handleShopChange} />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="address">Địa chỉ</label>
-                                    <input id="address" name="address" type="text" placeholder="Nhập địa chỉ" value={shopForm.address} onChange={handleShopChange} />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="phone">Số điện thoại</label>
-                                    <input id="phone" name="phone" type="text" placeholder="Nhập số điện thoại" value={shopForm.phone} onChange={handleShopChange} maxLength={10} inputMode="numeric" pattern="\d*" />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="email">Email</label>
-                                    <input id="email" name="email" type="email" placeholder="Nhập email" value={shopForm.email} onChange={handleShopChange} />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="city">Thành phố</label>
-                                    <input id="city" name="city" type="text" placeholder="Thành phố" value={shopForm.city} onChange={handleShopChange} />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="province">Tỉnh</label>
-                                    <input id="province" name="province" type="text" placeholder="Tỉnh" value={shopForm.province} onChange={handleShopChange} />
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="logoUrl">Logo (URL hoặc tải ảnh)</label>
-                                    <div className="d-flex align-items-center gap-2">
-                                        <input
-                                            id="logoUrl"
-                                            name="logoUrl"
-                                            type="text"
-                                            placeholder="URL logo"
-                                            value={shopForm.logoUrl}
-                                            onChange={handleShopChange}
-                                            style={{ flex: 1 }}
-                                        />
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={logoInputRef}
-                                            style={{ display: "none" }}
-                                            onChange={handleLogoUpload}
-                                            disabled={logoUploading}
-                                        />
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => logoInputRef.current.click()}
-                                            disabled={logoUploading}
-                                        >
-                                            {logoUploading ? "Đang tải..." : "Chọn ảnh"}
-                                        </button>
-                                    </div>
-                                    {shopForm.logoUrl && (
-                                        <img
-                                            src={shopForm.logoUrl}
-                                            alt="Logo preview"
-                                            style={{ maxHeight: 60, marginTop: 8, borderRadius: 8 }}
-                                        />
-                                    )}
-                                </div>
-                                <div className="col-md-6 mb-2">
-                                    <label htmlFor="coverImageUrl">Ảnh bìa (URL hoặc tải ảnh)</label>
-                                    <div className="d-flex align-items-center gap-2">
-                                        <input
-                                            id="coverImageUrl"
-                                            name="coverImageUrl"
-                                            type="text"
-                                            placeholder="URL ảnh bìa"
-                                            value={shopForm.coverImageUrl}
-                                            onChange={handleShopChange}
-                                            style={{ flex: 1 }}
-                                        />
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            ref={coverInputRef}
-                                            style={{ display: "none" }}
-                                            onChange={handleCoverUpload}
-                                            disabled={coverUploading}
-                                        />
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary btn-sm"
-                                            onClick={() => coverInputRef.current.click()}
-                                            disabled={coverUploading}
-                                        >
-                                            {coverUploading ? "Đang tải..." : "Chọn ảnh"}
-                                        </button>
-                                    </div>
-                                    {shopForm.coverImageUrl && (
-                                        <img
-                                            src={shopForm.coverImageUrl}
-                                            alt="Cover preview"
-                                            style={{ maxHeight: 60, marginTop: 8, borderRadius: 8 }}
-                                        />
-                                    )}
-                                </div>
-                                <div className="col-md-12 mb-2">
-                                    <label htmlFor="qrBanking">QR Banking (URL)</label>
-                                    <input id="qrBanking" name="qrBanking" type="text" placeholder="URL QR Banking" value={shopForm.qrBanking} onChange={handleShopChange} />
-                                </div>
-                            </div>
-                            {error && <div style={{ color: "#e74c3c", marginBottom: 8, fontSize: 14 }}>{error}</div>}
-                            <button className="register-btn" type="submit" disabled={loading}>
-                                {loading ? "Đang đăng ký shop..." : "Đăng Ký Shop"}
-                            </button>
-                        </form>
-                        <a className="login-link" href="/login">Đã có tài khoản? Đăng nhập</a>
-                    </>
-                )}
+                <a className="login-link" href="/login">
+                    Đã có tài khoản? Đăng nhập
+                </a>
             </div>
         </div>
     );

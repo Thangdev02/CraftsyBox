@@ -44,7 +44,7 @@ const NavigationBar = () => {
     <Navbar expand="lg" className="navbar-custom" fixed="top" key={`navbar-${Date.now()}`}>
       <Container>
         <div
-          style={{ width: "80px", height: "80px", cursor: "pointer" }}
+          style={{ width: "150px", height: "100px", cursor: "pointer" }}
           onClick={() => handleNavigation("/")}
         >
           <img
