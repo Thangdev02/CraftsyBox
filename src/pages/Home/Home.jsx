@@ -80,10 +80,10 @@ const Home = () => {
                                 <h1 className="display-4 fw-bold mb-4">
                                     Craftsy Box
                                     <br />
-                                    <span style={{ color: "#ffffff" }}>Khám Phá Thế Giới Thủ Công Cho Gia Đình</span>
+                                    <span style={{ color: "#ffffff" }}> Khi di sản gõ nhẹ cửa trái tim sáng tạo</span>
                                 </h1>
                                 <p className="lead mb-4" style={{ fontSize: "1.2rem", opacity: 0.9 }}>
-                                    Bộ kit sáng tạo lấy cảm hứng từ di sản Việt, an toàn cho người dùng và thân thiện môi trường.
+                                    Khám phá bộ kit thủ công Craftsy Nest – nơi bạn cùng học, cùng tạo và kết nối với văn hoá Việt.
 
                                 </p>
                                 <div className="d-flex gap-3">
@@ -437,13 +437,14 @@ const Home = () => {
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className="display-5 fw-bold mb-4">Sẵn Sàng Khám Phá?</h2>
+                                <h2 className="display-5 fw-bold mb-4">Kêu Gọi Hành Động (CTA)</h2>
                                 <p className="lead mb-4">
-                                    Hãy cùng chúng tôi khám phá thế giới handmade đầy màu sắc.
+                                    Sẵn sàng thử? Khám phá cùng Craftsy Nest chạm vào di sản Việt bằng đôi tay sáng tạo của bạn.
+
                                 </p>
                                 <Link to="/products">
                                     <Button variant="light" size="lg" className="fw-bold" style={{ color: "#84B4C8" }}>
-                                        Xem Tất Cả Sản Phẩm <ArrowRight className="ms-2" />
+                                        Xem Chi Tiết <ArrowRight className="ms-2" />
                                     </Button>
                                 </Link>
                             </motion.div>

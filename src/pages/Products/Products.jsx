@@ -206,9 +206,10 @@ const Products = () => {
                         <Row className="h-100 align-items-center justify-content-center text-center">
                             <Col>
                                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                                    <h1 className="display-4 fw-bold mb-3 text-white">Craftsy Box
+                                    <h1 className="display-4 fw-bold mb-3 text-white">Craftsy Nest
                                     </h1>
-                                    <p className="lead text-light"> Không gian sáng tạo khởi nguồn từ di sản</p>
+                                    <p className="lead text-light"> Mỗi bộ Craftsy Box là một hành trình nhỏ để bạn tự tay tạo nên, khám phá và cảm nhận văn hoá Việt, theo cách thú vị, an toàn và đầy cảm hứng.
+                                    </p>
                                 </motion.div>
                             </Col>
                         </Row>

@@ -106,7 +106,8 @@ const Contact = () => {
                     Liên Hệ Với Chúng Tôi
                   </h1>
                   <p className="lead text-light">
-                    Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn
+                    Craftsy Nest - luôn sẵn sàng lắng nghe và hỗ trợ bạn trong mọi hành trình sáng tạo.
+
                   </p>
                 </motion.div>
               </Col>
