@@ -15,7 +15,7 @@ const videos = [
     },
     {
         id: "L_jWHffIx5E",
-        title: "Origami cho trẻ em",
+        title: "Origami cho trẻ em bé",
         description: "Các nếp gấp đơn giản, phù hợp cho bố mẹ và bé.",
     },
     {
