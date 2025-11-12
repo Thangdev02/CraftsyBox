@@ -14,7 +14,7 @@ const Footer = () => {
         <Row className="g-4">
           {/* Giới thiệu */}
           <Col md={4} className="mb-4">
-            <h5 style={{ color: "#84B4C8", marginBottom: "20px", fontWeight: 600 }}>
+            <h5 style={{ color: "#f89b0a", marginBottom: "20px", fontWeight: 600 }}>
               Craftsy Nest
             </h5>
             <p style={{ color: "#6c757d", lineHeight: "1.7", fontSize: "15px" }}>
@@ -27,7 +27,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 aria-label="Facebook Craftsy Nest"
               >
-                <Facebook size={22} style={{ color: "#84B4C8", cursor: "pointer" }} />
+                <Facebook size={22} style={{ color: "#f89b0a", cursor: "pointer" }} />
               </a>
               <a
                 href="https://www.tiktok.com/@craftsynestvietnam"
@@ -73,11 +73,11 @@ const Footer = () => {
               Liên Hệ Nhanh
             </h6>
             <div className="d-flex align-items-start mb-3">
-              <Telephone size={16} style={{ color: "#84B4C8", marginRight: "12px", marginTop: "2px" }} />
+              <Telephone size={16} style={{ color: "#f89b0a", marginRight: "12px", marginTop: "2px" }} />
               <span style={{ color: "#6c757d", fontSize: "14.5px" }}>0984 421 580</span>
             </div>
             <div className="d-flex align-items-start mb-3">
-              <Envelope size={16} style={{ color: "#84B4C8", marginRight: "12px", marginTop: "2px" }} />
+              <Envelope size={16} style={{ color: "#f89b0a", marginRight: "12px", marginTop: "2px" }} />
               <a
                 href="mailto:craftsynest.team@gmail.com"
                 style={{
@@ -86,14 +86,14 @@ const Footer = () => {
                   textDecoration: "none",
                   transition: "color 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#84B4C8")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#f89b0a")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#6c757d")}
               >
                 craftsynest.team@gmail.com
               </a>
             </div>
             <div className="d-flex align-items-start mb-3">
-              <GeoAlt size={16} style={{ color: "#84B4C8", marginRight: "12px", marginTop: "2px" }} />
+              <GeoAlt size={16} style={{ color: "#f89b0a", marginRight: "12px", marginTop: "2px" }} />
               <span style={{ color: "#6c757d", fontSize: "14.5px" }}>
                 19 Ngõ 12 Hàm Nghi, Nam Từ Liêm, Hà Nội
               </span>

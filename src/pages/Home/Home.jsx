@@ -152,7 +152,7 @@ const Home = () => {
                                     style={{
                                         width: "80px",
                                         height: "80px",
-                                        backgroundColor: "#B2D9EA",
+                                        backgroundColor: "#f88eab",
                                     }}
                                 >
                                     <Heart size={32} color="white" />
@@ -178,7 +178,7 @@ const Home = () => {
                                     style={{
                                         width: "80px",
                                         height: "80px",
-                                        backgroundColor: "#84B4C8",
+                                        backgroundColor: "#ec592e",
                                     }}
                                 >
                                     <Award size={32} color="white" />
@@ -204,7 +204,7 @@ const Home = () => {
                                     style={{
                                         width: "80px",
                                         height: "80px",
-                                        backgroundColor: "#B2D9EA",
+                                        backgroundColor: "#44a86f",
                                     }}
                                 >
                                     <Star size={32} color="white" />
@@ -425,7 +425,7 @@ const Home = () => {
             <section
                 className="section-padding text-center text-white"
                 style={{
-                    background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                    background: "linear-gradient(135deg, #f89b0a 0%, #f2cb8eff 100%)",
                 }}
             >
                 <Container>
