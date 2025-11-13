@@ -1,6 +1,6 @@
 .profile-bg {
     min-height: 100vh;
-    background: linear-gradient(135deg, #65afe0 15%, #4f8edc 15%, #fff 16%, #cce0e7 100%);
+    background: linear-gradient(135deg, #f89b0a 15%, #f1b24c 15%, #fff 16%, #f89b0a 100%);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -43,7 +43,7 @@
 
 .profile-info {
     font-size: 1.1rem;
-    color: #2a3b8f;
+    color: #f89b0a;
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -51,13 +51,13 @@
 .profile-form-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #2a3b8f;
+    color: #f89b0a;
     margin-bottom: 24px;
     text-align: left;
 }
 
 .profile-form label {
-    color: #2a3b8f;
+    color: #f89b0a;
     font-weight: 500;
     margin-bottom: 6px;
 }
@@ -67,7 +67,7 @@
     width: 100%;
     padding: 12px 16px; /* Tăng padding để form lớn hơn */
     border-radius: 8px;
-    border: 1.5px solid #4f8edc;
+    border: 1.5px solid #f89b0a;
     margin-bottom: 18px;
     font-size: 1.1rem; /* Tăng font size */
     outline: none;
@@ -77,11 +77,11 @@
 
 .profile-form input:focus,
 .profile-form select:focus {
-    border-color: #2a3b8f;
+    border-color: #f89b0a;
 }
 
 .profile-btn {
-    background: #4f8edc;
+    background: #f89b0a;
     color: #fff;
     font-weight: 600;
     border: none;
@@ -94,7 +94,7 @@
 }
 
 .profile-btn:hover {
-    background: #2a3b8f;
+    background: #f1b24c;
 }
 
 .profile-section {
@@ -113,7 +113,7 @@
 }
 
 .profile-tab-link {
-    color: #2a3b8f !important;
+    color: #f89b0a !important;
     font-weight: 500;
     border: none !important;
     background: transparent !important;
@@ -124,8 +124,8 @@
 }
 
 .profile-tab-link.active {
-    color: #4f8edc !important;
-    border-bottom: 3px solid #4f8edc !important;
+    color: #f89b0a !important;
+    border-bottom: 3px solid #f89b0a !important;
     background: transparent !important;
 }
 
@@ -137,7 +137,7 @@
 
 .orders-table th {
     background-color: #f8f9fa;
-    color: #2a3b8f;
+    color: #f89b0a;
     font-weight: 600;
     border-bottom: 2px solid #dee2e6;
     padding: 12px 8px;
@@ -249,10 +249,10 @@
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-    background: #4f8edc;
+    background: #f89b0a;
     border-radius: 10px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb:hover {
-    background: #2a3b8f;
+    background: #f1b24c;
 }

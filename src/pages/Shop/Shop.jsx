@@ -157,7 +157,7 @@ const Shop = () => {
                                                 cursor: "pointer",
                                                 padding: "8px 16px",
                                                 fontSize: "0.9rem",
-                                                backgroundColor: selectedProvince === "all" ? "#84B4C8" : "#e9ecef",
+                                                backgroundColor: selectedProvince === "all" ? "#f89b0a" : "#e9ecef",
                                             }}
                                             onClick={() => handleProvinceFilter("all")}
                                         >
@@ -172,7 +172,7 @@ const Shop = () => {
                                                     cursor: "pointer",
                                                     padding: "8px 16px",
                                                     fontSize: "0.9rem",
-                                                    backgroundColor: selectedProvince === province ? "#84B4C8" : "#e9ecef",
+                                                    backgroundColor: selectedProvince === province ? "#f89b0a" : "#e9ecef",
                                                 }}
                                                 onClick={() => handleProvinceFilter(province)}
                                             >

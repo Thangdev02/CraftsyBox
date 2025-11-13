@@ -50,7 +50,7 @@
 }
 
 .thumb-img.active {
-  border: 2px solid #84B4C8;
+  border: 2px solid #f89b0a;
 }
 
 /* Kiểu cho thẻ đánh giá */
@@ -81,7 +81,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  /* Use single-tone orange gradient instead of mixing with blue */
+  background: linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,9 +131,9 @@
 }
 
 .quantity-btn:hover:not(:disabled) {
-  background-color: #84B4C8;
-  border-color: #84B4C8;
-  color: #9addf1;
+  background-color: #f89b0a;
+  border-color: #f89b0a;
+  color: #fff; /* ensure contrast on hover */
 }
 
 .quantity-btn:disabled {
@@ -146,7 +147,7 @@
   text-align: center;
   border-radius: 8px;
   font-size: 1rem;
-  border: 1px solid #80b9f1;
+  border: 1px solid #f89b0a;
 }
 
 .quantity-input::-webkit-outer-spin-button,
@@ -157,14 +158,14 @@
 
 /* Kiểu cho nút hành động */
 .btn-primary-custom {
-  background-color: #84B4C8;
+  background-color: #f89b0a;
   border: none;
   border-radius: 25px;
   padding: 10px 30px;
 }
 
 .btn-primary-custom:hover {
-  background-color: #6a9aa6;
+  background-color: #f1b24c;
 }
 
 /* Kiểu cho thông báo lỗi */

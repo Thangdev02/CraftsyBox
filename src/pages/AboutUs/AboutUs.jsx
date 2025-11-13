@@ -122,7 +122,7 @@ const AboutUs = () => {
                             <h2 className="fw-bold mb-4" style={{ color: "#2c3e50" }}>
                                 Câu Chuyện Của Chúng Tôi
                             </h2>
-                            <h3 className="h5 fw-semibold mb-3" style={{ color: "#84B4C8" }}>
+                            <h3 className="h5 fw-semibold mb-3" style={{ color: "#f89b0a" }}>
                                 Khi di sản chạm vào đôi tay sáng tạo
                             </h3>
                             <p className="text-muted mb-4" style={{ lineHeight: "1.8" }}>
@@ -221,7 +221,7 @@ const AboutUs = () => {
                                                     style={{
                                                         width: "70px",
                                                         height: "70px",
-                                                        backgroundColor: "#84B4C8",
+                                                            backgroundColor: "#f89b0a",
                                                     }}
                                                 >
                                                     <value.icon size={28} color="white" />
@@ -273,7 +273,7 @@ const AboutUs = () => {
                                     className="bg-light rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center"
                                     style={{ width: "100px", height: "100px" }}
                                 >
-                                    <PeopleFill size={40} color="#84B4C8" />
+                                    <PeopleFill size={40} color="#f89b0a" />
                                 </div>
                                 <h5 className="fw-bold">{member.name}</h5>
                                 <p className="text-primary fw-semibold">{member.role}</p>
@@ -286,7 +286,7 @@ const AboutUs = () => {
                 <section
                     className="text-center text-white py-5 rounded-4 mt-5"
                     style={{
-                        background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                        background: "linear-gradient(135deg, #f89b0a 0%, #eec37eff 100%)",
                     }}
                 >
                     <Container>

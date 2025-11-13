@@ -283,7 +283,7 @@ const ProductsShop = () => {
                                                 cursor: 'pointer',
                                                 padding: '8px 16px',
                                                 fontSize: '0.9rem',
-                                                backgroundColor: selectedCategory === 'all' ? '#84B4C8' : '#e9ecef',
+                                                backgroundColor: selectedCategory === 'all' ? '#f89b0a' : '#e9ecef',
                                             }}
                                             onClick={() => setSelectedCategory('all')}
                                         >
@@ -298,7 +298,7 @@ const ProductsShop = () => {
                                                     cursor: 'pointer',
                                                     padding: '8px 16px',
                                                     fontSize: '0.9rem',
-                                                    backgroundColor: selectedCategory === category ? '#84B4C8' : '#e9ecef',
+                                                    backgroundColor: selectedCategory === category ? '#f89b0a' : '#e9ecef',
                                                 }}
                                                 onClick={() => setSelectedCategory(category)}
                                             >
@@ -447,7 +447,7 @@ const ProductsShop = () => {
                                                     />
                                                 </Card.Text>
                                                 <div className="d-flex justify-content-between align-items-center mb-3">
-                                                    <span className="fw-bold" style={{ color: '#84B4C8', fontSize: '1.3rem' }}>
+                                                    <span className="fw-bold" style={{ color: '#f89b0a', fontSize: '1.3rem' }}>
                                                         {product.price?.toLocaleString('vi-VN')}đ
                                                     </span>
                                                     <div className="d-flex align-items-center">

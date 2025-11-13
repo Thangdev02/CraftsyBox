@@ -1,7 +1,7 @@
 /* Shop Banner Section */
 .shop-banner-section {
     height: 300px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%);
     position: relative;
     margin-bottom: 3rem;
     display: flex;
@@ -61,18 +61,18 @@
 
 /* Search and Filter Styles */
 .position-relative .form-control:focus {
-    border-color: #84B4C8;
+    border-color: #f89b0a;
     box-shadow: 0 0 0 0.2rem rgba(132, 180, 200, 0.25);
 }
 
 .form-select:focus {
-    border-color: #84B4C8;
+    border-color: #f89b0a;
     box-shadow: 0 0 0 0.2rem rgba(132, 180, 200, 0.25);
 }
 
 /* Button Styles */
 .btn-primary-custom {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%);
     border: none;
     border-radius: 25px;
     padding: 10px 30px;
@@ -83,19 +83,19 @@
 
 .btn-primary-custom:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px rgba(248,155,10,0.35);
     color: white;
 }
 
 .btn-outline-primary {
-    border-color: #84B4C8;
-    color: #84B4C8;
+    border-color: #f89b0a;
+    color: #f89b0a;
     transition: all 0.3s ease;
 }
 
 .btn-outline-primary:hover {
-    background-color: #84B4C8;
-    border-color: #84B4C8;
+    background-color: #f89b0a;
+    border-color: #f89b0a;
     color: white;
     transform: translateY(-2px);
 }
@@ -109,7 +109,7 @@
 
 /* Pagination Styles */
 .pagination .page-link {
-    color: #84B4C8;
+    color: #f89b0a;
     border-color: #dee2e6;
     margin: 0 2px;
     border-radius: 50%;
@@ -121,14 +121,14 @@
 }
 
 .pagination .page-link:hover {
-    background-color: #84B4C8;
-    border-color: #84B4C8;
+    background-color: #f89b0a;
+    border-color: #f89b0a;
     color: white;
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #84B4C8;
-    border-color: #84B4C8;
+    background-color: #f89b0a;
+    border-color: #f89b0a;
 }
 
 /* Loading and Empty State */
@@ -195,10 +195,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    background: linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%);
 }

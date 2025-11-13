@@ -88,10 +88,19 @@ const Home = () => {
                                 </p>
                                 <div className="d-flex gap-3">
                                     <Link to="/products">
-                                        <Button className="btn-primary-custom" size="lg">
-                                            Xem chi tiết<ArrowRight className="ms-2" />
-                                        </Button>
-                                    </Link>
+  <Button
+    className="btn-primary-custom btn-f89b0a"
+    size="lg"
+    style={{
+      backgroundImage: "none",
+      backgroundColor: "#f89b0a",
+      borderColor: "#f89b0a",
+      color: "#fff"
+    }}
+  >
+    Xem chi tiết<ArrowRight className="ms-2" />
+  </Button>
+</Link>
                                     <Link to="/products">
                                         <Button variant="outline-light" size="lg" className="btn-outline-custom">
                                             Xem Bộ Sưu Tập
@@ -294,7 +303,7 @@ const Home = () => {
                                                     }} />
                                                 </Card.Text>
                                                 <div className="d-flex justify-content-between align-items-center mt-auto mb-2">
-                                                    <span className="fw-bold" style={{ color: "#84B4C8", fontSize: "1.2rem" }}>
+                                                    <span className="fw-bold" style={{ color: "#f89b0a", fontSize: "1.2rem" }}>
                                                         {product.price?.toLocaleString("vi-VN")}đ
                                                     </span>
                                                     <div className="d-flex align-items-center">
@@ -443,7 +452,7 @@ const Home = () => {
 
                                 </p>
                                 <Link to="/products">
-                                    <Button variant="light" size="lg" className="fw-bold" style={{ color: "#84B4C8" }}>
+                                    <Button variant="light" size="lg" className="fw-bold" style={{ color: "#f89b0a" }}>
                                         Xem Chi Tiết <ArrowRight className="ms-2" />
                                     </Button>
                                 </Link>

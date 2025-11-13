@@ -154,7 +154,7 @@ const CommentItem = memo(({
                                     size="sm"
                                     onClick={handleEditSave}
                                     style={{
-                                        background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                                        background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                                         border: "none",
                                         borderRadius: "15px"
                                     }}
@@ -211,7 +211,7 @@ const CommentItem = memo(({
                                             size="sm"
                                             onClick={handleReplySubmit}
                                             style={{
-                                                background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                                                background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                                                 border: "none",
                                                 borderRadius: "15px"
                                             }}

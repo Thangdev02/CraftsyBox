@@ -12,7 +12,7 @@ const LoadingSpinner = () => {
           width: "40px",
           height: "40px",
           border: "3px solid #e9ecef",
-          borderTop: "3px solid #84B4C8",
+          borderTop: "3px solid #f89b0a",
           borderRadius: "50%",
         }}
       />

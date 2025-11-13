@@ -535,7 +535,7 @@ const BlogDetail = () => {
         <Container>
           <Row className="justify-content-center">
             <Col className="text-center py-5">
-              <Spinner animation="border" role="status" style={{ color: "#84B4C8" }}>
+              <Spinner animation="border" role="status" style={{ color: "#f89b0a" }}>
                 <span className="visually-hidden">Đang tải...</span>
               </Spinner>
               <h4 className="mt-3">Đang tải bài viết...</h4>
@@ -557,7 +557,7 @@ const BlogDetail = () => {
             </Alert>
             <Link to="/blog" style={{ textDecoration: 'none' }}>
               <Button style={{
-                background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                 border: "none",
                 borderRadius: "25px",
                 padding: "12px 30px",
@@ -589,7 +589,7 @@ const BlogDetail = () => {
         className="banner-section blog-banner"
         style={{
           height: "400px",
-          background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
           position: "relative",
           marginBottom: "3rem",
           display: "flex",

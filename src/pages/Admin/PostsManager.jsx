@@ -5,7 +5,7 @@ export default function PostsManager() {
   return (
     <div>
       <h3 className="mb-3">Post Management</h3>
-      <Button variant="primary" className="mb-3" style={{ background: "#84b4c8", border: "none" }}>
+  <Button variant="primary" className="mb-3" style={{ background: "#f89b0a", border: "none" }}>
         + Add Post
       </Button>
       <Table bordered hover>

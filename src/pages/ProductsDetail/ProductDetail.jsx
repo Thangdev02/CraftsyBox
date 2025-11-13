@@ -486,7 +486,7 @@ const ProductDetail = () => {
                     height: 80,
                     objectFit: "cover",
                     cursor: "pointer",
-                    border: selectedImage === img ? "2px solid #84B4C8" : "1px solid #eee",
+                    border: selectedImage === img ? "2px solid #f89b0a" : "1px solid #eee",
                     borderRadius: "8px",
                     transition: "all 0.3s ease"
                   }}

@@ -354,7 +354,7 @@ const Blog = () => {
                                 onClick={() => setShowCreateModal(true)}
                                 style={{
                                     borderRadius: '25px',
-                                    background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                                    background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                                     border: "none",
                                     fontWeight: "600"
                                 }}
@@ -453,7 +453,7 @@ const Blog = () => {
                                                     </div>
                                                     <Link to={`/blog/${featuredBlog.id}`} style={{ textDecoration: 'none' }}>
                                                         <Button style={{
-                                                            background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                                                            background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                                                             border: "none",
                                                             borderRadius: "25px",
                                                             padding: "12px 30px",
@@ -477,7 +477,7 @@ const Blog = () => {
                 <Row>
                     {loading ? (
                         <Col className="text-center py-5">
-                            <Spinner animation="border" role="status" style={{ color: "#84B4C8" }}>
+                            <Spinner animation="border" role="status" style={{ color: "#f89b0a" }}>
                                 <span className="visually-hidden">Đang tải...</span>
                             </Spinner>
                             <h4 className="mt-3">Đang tải bài viết...</h4>
@@ -555,7 +555,7 @@ const Blog = () => {
                                 <p className="text-muted">Hãy thử thay đổi từ khóa tìm kiếm để xem thêm bài viết.</p>
                                 <Button
                                     style={{
-                                        background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                                        background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                                         border: "none",
                                         borderRadius: "25px",
                                         padding: "12px 30px",
@@ -716,7 +716,7 @@ const Blog = () => {
                         onClick={handleCreateBlog}
                         disabled={createLoading || uploading || !newBlog.title.trim() || !stripHtml(newBlog.content).trim() || !newBlog.image}
                         style={{
-                            background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                            background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                             border: "none"
                         }}
                     >

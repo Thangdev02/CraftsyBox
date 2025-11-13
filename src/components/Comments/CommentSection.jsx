@@ -28,7 +28,7 @@ const CommentSection = ({
 
             {commentsLoading ? (
                 <div className="text-center py-4">
-                    <Spinner animation="border" size="sm" style={{ color: "#84B4C8" }} />
+                    <Spinner animation="border" size="sm" style={{ color: "#f89b0a" }} />
                 </div>
             ) : comments.length > 0 ? (
                 <div>
@@ -60,7 +60,7 @@ const CommentSection = ({
             <div className="mt-4">
                 <Button
                     style={{
-                        background: "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                        background: "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                         border: "none",
                         borderRadius: "25px",
                         padding: "12px 30px",

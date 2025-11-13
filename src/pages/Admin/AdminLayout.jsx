@@ -18,7 +18,7 @@ export default function AdminLayout() {
       <div
         style={{
           width: collapsed ? "70px" : "220px",
-          backgroundColor: "#84b4c8",
+          backgroundColor: "#f89b0a",
           color: "#fff",
           transition: "0.3s",
           zIndex: 99999,

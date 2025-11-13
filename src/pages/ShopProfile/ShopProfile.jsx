@@ -210,7 +210,7 @@ const ShopProfile = () => {
                 <div
                     className="shop-cover-image"
                     style={{
-                        backgroundImage: shopData?.coverImageUrl ? `url(${shopData.coverImageUrl})` : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                        backgroundImage: shopData?.coverImageUrl ? `url(${shopData.coverImageUrl})` : 'linear-gradient(135deg, #f89b0a 0%, #f1b24c 100%)'
                     }}
                 >
                     <div className="shop-cover-overlay">

@@ -94,7 +94,7 @@ const Login = () => {
                     <label htmlFor="password">Mật khẩu<LockFill className="input-icon" /></label>
                     <div className="input-wrapper">
 
-                        <div style={{ fontSize: 13, color: "#1976d2", marginBottom: 8 }}>
+                        <div style={{ fontSize: 13, color: "#f89b0a", marginBottom: 8 }}>
                             Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, chữ thường và ký tự đặc biệt (@!@#$%^&*).
                         </div>
                         <input
@@ -133,7 +133,7 @@ const Login = () => {
                     className="login-link"
                     href="/forgot-password"
                     style={{
-                        color: "#4f8edc",
+                        color: "#f89b0a",
                         fontWeight: 500,
                         textDecoration: "underline",
                         cursor: "pointer",
@@ -147,7 +147,7 @@ const Login = () => {
                     <a
                         href="/register"
                         style={{
-                            color: "#4f8edc",
+                            color: "#f89b0a",
                             fontWeight: 500,
                             textDecoration: "underline",
                             cursor: "pointer",

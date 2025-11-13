@@ -136,7 +136,7 @@ const Contact = () => {
                       style={{
                         width: "50px",
                         height: "50px",
-                        backgroundColor: "#B2D9EA",
+                        backgroundColor: "#f89b0a",
                       }}
                     >
                       <GeoAlt size={20} color="white" />
@@ -160,7 +160,7 @@ const Contact = () => {
                       style={{
                         width: "50px",
                         height: "50px",
-                        backgroundColor: "#84B4C8",
+                        backgroundColor: "#f89b0a",
                       }}
                     >
                       <Telephone size={20} color="white" />
@@ -186,7 +186,7 @@ const Contact = () => {
                       style={{
                         width: "50px",
                         height: "50px",
-                        backgroundColor: "#B2D9EA",
+                        backgroundColor: "#f89b0a",
                       }}
                     >
                       <Envelope size={20} color="white" />
@@ -213,7 +213,7 @@ const Contact = () => {
                         width: "50px",
                         height: "50px",
                         backgroundColor: "#fff",
-                        border: "1px solid #B2D9EA"
+                        border: "1px solid #f89b0a"
                       }}
                     >
                       <a
@@ -255,7 +255,7 @@ const Contact = () => {
                         width: "50px",
                         height: "50px",
                         backgroundColor: "#fff",
-                        border: "1px solid #B2D9EA"
+                        border: "1px solid #8B5E3C"
                       }}
                     >
                       <a
@@ -296,7 +296,7 @@ const Contact = () => {
                       style={{
                         width: "50px",
                         height: "50px",
-                        backgroundColor: "#84B4C8",
+                        backgroundColor: "#f89b0a",
                       }}
                     >
                       <Clock size={20} color="white" />
@@ -405,7 +405,7 @@ const Contact = () => {
                       style={{
                         background: isSubmitting
                           ? "linear-gradient(135deg, #6c757d 0%, #495057 100%)"
-                          : "linear-gradient(135deg, #84B4C8 0%, #B2D9EA 100%)",
+                          : "linear-gradient(135deg, #f89b0a 0%, #8B5E3C 100%)",
                         border: "none",
                         borderRadius: "25px",
                         padding: "12px 30px",

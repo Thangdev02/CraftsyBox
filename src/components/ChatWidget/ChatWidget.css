@@ -31,7 +31,7 @@
   }
   
   .chatbox-header {
-    background: #84b4c8;
+    background: #f89b0a;
     color: white;
     padding: 10px 15px;
     display: flex;
@@ -79,7 +79,7 @@
     white-space: pre-wrap;
   }
   .chat-message.user .message-content {
-    background: #84b4c8;
+    background: #f89b0a;
     color: white;
   }
   
@@ -102,7 +102,7 @@
   }
   .product-card .p-price {
     font-size: 13px;
-    color: #84b4c8;
+    color: #f89b0a;
   }
   .product-card .p-stock {
     font-size: 12px;
@@ -124,7 +124,7 @@
   }
   
   .chatbox-footer button {
-    background: #84b4c8;
+    background: #f89b0a;
     border: none;
     color: white;
     border-radius: 8px;

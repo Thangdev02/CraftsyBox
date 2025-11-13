@@ -220,7 +220,7 @@ const Products = () => {
                     <Col lg={5}>
                         <div className="position-relative d-flex">
                             <Form.Control type="text" placeholder="Tìm kiếm sản phẩm..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyPress={handleKeyPress} style={{ paddingLeft: "15px", borderRadius: "25px 0 0 25px", border: "2px solid #e9ecef", borderRight: "none" }} />
-                            <Button variant="primary" onClick={handleSearch} style={{ borderRadius: "0 25px 25px 0", border: "2px solid #84B4C8", backgroundColor: "#84B4C8", borderLeft: "none", minWidth: "60px" }}>
+                            <Button variant="primary" onClick={handleSearch} style={{ borderRadius: "0 25px 25px 0", border: "2px solid #f89b0a", backgroundColor: "#f89b0a", borderLeft: "none", minWidth: "60px" }}>
                                 <Search size={16} />
                             </Button>
                         </div>
@@ -254,9 +254,9 @@ const Products = () => {
                                 <Card className="p-3" style={{ backgroundColor: "#f8f9fa", border: "none" }}>
                                     <h6 className="fw-bold mb-3" style={{ color: "#2c3e50" }}>Danh mục sản phẩm:</h6>
                                     <div className="d-flex flex-wrap gap-2">
-                                        <Badge key="all" bg={selectedCategory === "all" ? "primary" : "light"} text={selectedCategory === "all" ? "white" : "dark"} style={{ cursor: "pointer", padding: "8px 16px", fontSize: "0.9rem", backgroundColor: selectedCategory === "all" ? "#84B4C8" : "#e9ecef" }} onClick={() => setSelectedCategory("all")}>Tất cả</Badge>
+                                        <Badge key="all" bg={selectedCategory === "all" ? "primary" : "light"} text={selectedCategory === "all" ? "white" : "dark"} style={{ cursor: "pointer", padding: "8px 16px", fontSize: "0.9rem", backgroundColor: selectedCategory === "all" ? "#f89b0a" : "#e9ecef" }} onClick={() => setSelectedCategory("all")}>Tất cả</Badge>
                                         {categories.map((category) => (
-                                            <Badge key={category} bg={selectedCategory === category ? "primary" : "light"} text={selectedCategory === category ? "white" : "dark"} style={{ cursor: "pointer", padding: "8px 16px", fontSize: "0.9rem", backgroundColor: selectedCategory === category ? "#84B4C8" : "#e9ecef" }} onClick={() => setSelectedCategory(category)}>
+                                            <Badge key={category} bg={selectedCategory === category ? "primary" : "light"} text={selectedCategory === category ? "white" : "dark"} style={{ cursor: "pointer", padding: "8px 16px", fontSize: "0.9rem", backgroundColor: selectedCategory === category ? "#f89b0a" : "#e9ecef" }} onClick={() => setSelectedCategory(category)}>
                                                 {category}
                                             </Badge>
                                         ))}
@@ -327,7 +327,7 @@ const Products = () => {
                                                     <div dangerouslySetInnerHTML={{ __html: product.description }} />
                                                 </Card.Text>
                                                 <div className="d-flex justify-content-between align-items-center mb-3">
-                                                    <span className="fw-bold" style={{ color: "#84B4C8", fontSize: "1.3rem" }}>{product.price?.toLocaleString("vi-VN")}đ</span>
+                                                    <span className="fw-bold" style={{ color: "#f89b0a", fontSize: "1.3rem" }}>{product.price?.toLocaleString("vi-VN")}đ</span>
                                                     <div className="d-flex align-items-center">
                                                         <Star fill="#ffc107" color="#ffc107" size={16} />
                                                         <span className="ms-1 text-muted fw-bold">{product.rating || 0}</span>
