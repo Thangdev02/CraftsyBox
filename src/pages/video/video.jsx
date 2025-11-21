@@ -17,6 +17,11 @@ const groups = [
                 title: "Giới thiệu làng nghề Chuồn Chuồn Tre",
                 description: "Giới thiệu tổng quan về làng nghề và sản phẩm đặc trưng.",
             },
+            {
+                id: "v4Dzl3cnCQY",
+                title: "Giới thiệu làng nghề Gốm Bát Tràng",
+                description: "Giới thiệu làng nghề Gốm Bát Tràng: lịch sử, quy trình và sản phẩm đặc sắc.",
+            },
         ],
     },
     {
