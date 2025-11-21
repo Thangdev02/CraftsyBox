@@ -88,7 +88,7 @@ const Contact = () => {
           <div
             className="position-absolute w-100 h-100"
             style={{
-              backgroundImage: "url('/images/contact-banner.jpg')",
+              backgroundImage: "url('/images/banner trang chủ.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               filter: "brightness(0.7)",

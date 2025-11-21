@@ -68,7 +68,7 @@ main {
 
 .btn-outline-custom {
   border: 2px solid #022b3c;
-  color:#022b3c;
+  color: #022b3c;
   background: transparent;
   padding: 12px 30px;
   border-radius: 25px;
@@ -213,10 +213,12 @@ main {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -289,9 +291,11 @@ main {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
+
   100% {
     opacity: 1;
   }
@@ -361,6 +365,7 @@ main {
 }
 
 @media (max-width: 576px) {
+
   .btn-primary-custom,
   .btn-outline-custom {
     padding: 10px 20px;
@@ -378,6 +383,7 @@ main {
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -397,6 +403,7 @@ main {
 
 /* Print styles */
 @media print {
+
   .navbar-custom,
   .scroll-to-top-btn,
   .btn {
@@ -412,12 +419,15 @@ main {
 .about-banner {
   background-image: url('/images/hanmade.jpg') !important;
 }
+
 .blog-banner {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/-_HANDMADE_24H_CLOCK_-_HITOTOKI_by_KINGGYM.webm/1920px---_HANDMADE_24H_CLOCK_-_HITOTOKI_by_KINGGYM.webm.jpg" )!important;
+  background-image: url('/images/banner trang chủ.png') !important;
 }
+
 .contact-banner {
-  background-image: url("https://irp.cdn-website.com/1000debe/dms3rep/multi/chic-wallpaper-trends-for-2025-1920px.jpg" )!important;
+  background-image: url("https://irp.cdn-website.com/1000debe/dms3rep/multi/chic-wallpaper-trends-for-2025-1920px.jpg") !important;
 }
+
 .team-slider {
   display: flex;
   flex-wrap: wrap;
@@ -429,14 +439,14 @@ main {
   border-radius: 20px;
   padding: 20px;
   width: 260px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transform: perspective(1000px) rotateY(-5deg);
   transition: transform 0.4s ease, box-shadow 0.3s ease;
 }
 
 .team-card:hover {
   transform: perspective(1000px) rotateY(0deg) scale(1.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .team-img-wrapper {
@@ -445,7 +455,7 @@ main {
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .team-img {
@@ -464,12 +474,14 @@ main {
   font-weight: 500;
   transition: all 0.3s ease;
 }
+
 .btn.btn-f89b0a:hover {
   background-color: #f1b24c;
   border-color: #f1b24c;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(132, 180, 200, 0.3);
 }
+
 .btn-primary-custom.btn-f89b0a {
   background-image: none;
   background-color: #f89b0a;
@@ -480,13 +492,15 @@ main {
   font-weight: 500;
   transition: all 0.3s ease;
 }
+
 .btn-primary-custom.btn-f89b0a:hover {
   background-image: none;
   background-color: #f1b24c;
   border-color: #f1b24c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
+
 .btn.btn-f89b0a,
 .btn-primary-custom.btn-f89b0a {
   background-image: none;
@@ -498,11 +512,12 @@ main {
   font-weight: 500;
   transition: all 0.3s ease;
 }
+
 .btn.btn-f89b0a:hover,
 .btn-primary-custom.btn-f89b0a:hover {
   background-image: none;
   background-color: #f1b24c;
   border-color: #f1b24c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }

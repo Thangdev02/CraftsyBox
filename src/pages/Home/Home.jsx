@@ -88,19 +88,19 @@ const Home = () => {
                                 </p>
                                 <div className="d-flex gap-3">
                                     <Link to="/products">
-  <Button
-    className="btn-primary-custom btn-f89b0a"
-    size="lg"
-    style={{
-      backgroundImage: "none",
-      backgroundColor: "#f89b0a",
-      borderColor: "#f89b0a",
-      color: "#fff"
-    }}
-  >
-    Xem chi tiết<ArrowRight className="ms-2" />
-  </Button>
-</Link>
+                                        <Button
+                                            className="btn-primary-custom btn-f89b0a"
+                                            size="lg"
+                                            style={{
+                                                backgroundImage: "none",
+                                                backgroundColor: "#f89b0a",
+                                                borderColor: "#f89b0a",
+                                                color: "#fff"
+                                            }}
+                                        >
+                                            Xem chi tiết<ArrowRight className="ms-2" />
+                                        </Button>
+                                    </Link>
                                     <Link to="/products">
                                         <Button variant="outline-light" size="lg" className="btn-outline-custom">
                                             Xem Bộ Sưu Tập
@@ -116,12 +116,7 @@ const Home = () => {
                                 transition={{ duration: 0.8, delay: 0.2 }}
                                 className="text-center"
                             >
-                                <img
-                                    src="https://png.pngtree.com/png-vector/20240816/ourmid/pngtree-embracing-full-handmade-products-png-image_13504255.png"
-                                    alt="Handmade Products"
-                                    className="img-fluid rounded-3"
-                                    style={{ maxHeight: "500px", objectFit: "cover" }}
-                                />
+                                {/* Right-side illustration removed per design request */}
                             </motion.div>
                         </Col>
                     </Row>

@@ -66,7 +66,7 @@ const AboutUs = () => {
                         className="position-absolute w-100 h-100"
                         style={{
                             marginTop: "10px",
-                            backgroundImage: "url('/images/baner.jpg')",
+                            backgroundImage: "url('/images/banner trang chủ.png')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                             filter: "brightness(0.7)",
@@ -221,7 +221,7 @@ const AboutUs = () => {
                                                     style={{
                                                         width: "70px",
                                                         height: "70px",
-                                                            backgroundColor: "#f89b0a",
+                                                        backgroundColor: "#f89b0a",
                                                     }}
                                                 >
                                                     <value.icon size={28} color="white" />

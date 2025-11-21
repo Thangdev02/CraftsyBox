@@ -1,114 +1,177 @@
 /* Hero Shapes */
 .shape {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.2;
-    z-index: 0;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* Circle 1 */
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  background: #04202c;
+  top: 10%;
+  left: 5%;
+  animation: floatX 6s ease-in-out infinite alternate;
+}
+
+/* Circle 2 */
+.shape-2 {
+  width: 80px;
+  height: 80px;
+  background: #cc0fb9;
+  bottom: 15%;
+  right: 10%;
+  animation: floatY 8s ease-in-out infinite alternate;
+}
+
+/* Circle 3 */
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  background: #c28803;
+  top: 30%;
+  right: 30%;
+  animation: floatXY 7s ease-in-out infinite alternate;
+}
+
+/* Icon Circle */
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gallery */
+.gallery-img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* === Keyframes for floating === */
+@keyframes floatX {
+  0% {
+    transform: translateX(0);
   }
-  
-  /* Circle 1 */
-  .shape-1 {
-    width: 120px;
-    height: 120px;
-    background: #04202c;
-    top: 10%;
-    left: 5%;
-    animation: floatX 6s ease-in-out infinite alternate;
+
+  100% {
+    transform: translateX(80px);
   }
-  
-  /* Circle 2 */
-  .shape-2 {
-    width: 80px;
-    height: 80px;
-    background: #cc0fb9;
-    bottom: 15%;
-    right: 10%;
-    animation: floatY 8s ease-in-out infinite alternate;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
   }
-  
-  /* Circle 3 */
-  .shape-3 {
-    width: 100px;
-    height: 100px;
-    background: #c28803;
-    top: 30%;
-    right: 30%;
-    animation: floatXY 7s ease-in-out infinite alternate;
+
+  100% {
+    transform: translateY(-80px);
   }
-  
-  /* Icon Circle */
-  .icon-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+@keyframes floatXY {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
   }
-  
-  /* Gallery */
-  .gallery-img {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+
+  100% {
+    transform: translate(60px, -60px) rotate(20deg);
   }
-  
-  /* === Keyframes for floating === */
-  @keyframes floatX {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(80px); }
+}
+
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  width: 160px;
+  margin: 0 20px;
+  text-align: center;
+}
+
+.logo-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-item p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
-  
-  @keyframes floatY {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-80px); }
+
+  100% {
+    transform: translateX(-50%);
   }
-  
-  @keyframes floatXY {
-    0%   { transform: translate(0,0) rotate(0deg); }
-    100% { transform: translate(60px, -60px) rotate(20deg); }
+}
+
+/* Home hero/banner background using provided assets */
+.hero-section {
+  /* Use only the subtle repeating pattern for the home hero; remove the right-side illustration */
+  background-image: url('/images/banner trang chủ.png');
+  background-repeat: repeat;
+  background-position: left top;
+  background-size: auto;
+  background-color: #f89b0a;
+  /* fallback */
+}
+
+/* Ensure overlay and shapes stay above background */
+.hero-section .shape,
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 991px) {
+
+  /* Move main illustration below content on smaller screens */
+  .hero-section {
+    background-position: center top, left top;
+    background-size: cover, auto;
   }
-  
-  .logo-slider {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
+
+  .hero-section .shape-1 {
+    top: 6%;
+    left: 3%;
   }
-  
-  .logo-track {
-    display: flex;
-    width: max-content;
-    animation: scroll 25s linear infinite;
+
+  .hero-section .shape-2 {
+    bottom: 10%;
+    right: 6%;
   }
-  
-  .logo-item {
-    flex: 0 0 auto;
-    width: 160px;
-    margin: 0 20px;
-    text-align: center;
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    background-position: center top, center top;
+    background-size: cover, auto;
   }
-  
-  .logo-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .hero-section .shape {
+    display: none;
   }
-  
-  .logo-item p {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2c3e50;
-    margin: 0;
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
+}

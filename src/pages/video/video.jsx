@@ -2,26 +2,47 @@ import React, { useState } from "react";
 import { Container, Row, Col, Card, Button, Modal } from "react-bootstrap";
 import { PlayFill, CameraVideo } from "react-bootstrap-icons";
 
-const videos = [
+// Các video nhóm (YouTube IDs). Nhóm theo nội dung giống tên.
+const groups = [
     {
-        id: "dQw4w9WgXcQ",
-        title: "Hướng dẫn làm đồ chơi gỗ",
-        description: "Bước cơ bản để hoàn thiện mô hình gỗ cho gia đình.",
+        groupTitle: "Giới thiệu làng nghề",
+        items: [
+            {
+                id: "29_LSk4wWJk",
+                title: "Giới thiệu làng nghề Tò He Xuân La",
+                description: "Tìm hiểu nghệ nhân và quy trình làm tò he truyền thống.",
+            },
+            {
+                id: "mN2Wnp4rPRk",
+                title: "Giới thiệu làng nghề Chuồn Chuồn Tre",
+                description: "Giới thiệu tổng quan về làng nghề và sản phẩm đặc trưng.",
+            },
+        ],
     },
     {
-        id: "3JZ_D3ELwOQ",
-        title: "Tô màu tượng đất nung",
-        description: "Kỹ thuật nền an toàn và đẹp mắt cho người mới.",
-    },
-    {
-        id: "L_jWHffIx5E",
-        title: "Origami cho trẻ em bé",
-        description: "Các nếp gấp đơn giản, phù hợp cho bố mẹ và bé.",
-    },
-    {
-        id: "eY52Zsg-KVI",
-        title: "Hoàn thiện hộp quà thủ công",
-        description: "Tips dán decal và hoàn thiện hộp quà chuyên nghiệp.",
+        groupTitle: "Hướng dẫn bộ kit",
+        items: [
+            {
+                id: "GGHbGmR-ZVw",
+                title: "Hướng dẫn bộ kit Gốm Mosaic",
+                description: "Bước từng bước sử dụng kit Gốm Mosaic.",
+            },
+            {
+                id: "ALGfFpOmhoM",
+                title: "Hướng dẫn bộ kit Gốm Bát Tràng",
+                description: "Hướng dẫn tô và hoàn thiện bộ kit gốm Bát Tràng.",
+            },
+            {
+                id: "wtrTC30q8ZY",
+                title: "Hướng dẫn bộ kit Chuồn Chuồn Tre",
+                description: "Hướng dẫn tạo và trang trí Chuồn Chuồn Tre bằng kit.",
+            },
+            {
+                id: "4z5sykg8fPU",
+                title: "Hướng dẫn bộ kit Tò He Xuân La",
+                description: "Hướng dẫn hoàn thiện bộ kit Tò He cho người mới.",
+            },
+        ],
     },
 ];
 
@@ -38,48 +59,53 @@ const Videos = () => {
                     <p className="lead text-muted">Bốn video hướng dẫn chọn lọc để bạn bắt đầu.</p>
                 </div>
 
-                <Row className="g-4">
-                    {videos.map((v) => (
-                        <Col key={v.id} md={6} lg={3}>
-                            <Card className="h-100 shadow-sm" style={{ borderRadius: 12, overflow: "hidden" }}>
-                                <div
-                                    role="button"
-                                    onClick={() => setPlaying(v.id)}
-                                    style={{ position: "relative", cursor: "pointer" }}
-                                >
-                                    <Card.Img
-                                        variant="top"
-                                        src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`}
-                                        alt={v.title}
-                                        style={{ height: 180, objectFit: "cover" }}
-                                    />
-                                    <div style={{
-                                        position: "absolute",
-                                        inset: 0,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%)"
-                                    }}>
-                                        <Button variant="light" className="rounded-circle p-2" style={{ opacity: 0.95 }}>
-                                            <PlayFill />
-                                        </Button>
-                                    </div>
-                                </div>
+                {groups.map((group) => (
+                    <section key={group.groupTitle} className="mb-5">
+                        <h3 className="h4 fw-bold mb-3">{group.groupTitle}</h3>
+                        <Row className="g-4">
+                            {group.items.map((v) => (
+                                <Col key={v.id} md={6} lg={3}>
+                                    <Card className="h-100 shadow-sm" style={{ borderRadius: 12, overflow: "hidden" }}>
+                                        <div
+                                            role="button"
+                                            onClick={() => setPlaying(v.id)}
+                                            style={{ position: "relative", cursor: "pointer" }}
+                                        >
+                                            <Card.Img
+                                                variant="top"
+                                                src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`}
+                                                alt={v.title}
+                                                style={{ height: 180, objectFit: "cover" }}
+                                            />
+                                            <div style={{
+                                                position: "absolute",
+                                                inset: 0,
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%)"
+                                            }}>
+                                                <Button variant="light" className="rounded-circle p-2" style={{ opacity: 0.95 }}>
+                                                    <PlayFill />
+                                                </Button>
+                                            </div>
+                                        </div>
 
-                                <Card.Body className="d-flex flex-column">
-                                    <Card.Title className="h6">{v.title}</Card.Title>
-                                    <Card.Text className="text-muted small" style={{ flex: 1 }}>{v.description}</Card.Text>
-                                    <div className="text-end">
-                                        <Button variant="outline-primary" size="sm" onClick={() => setPlaying(v.id)}>
-                                            Xem ngay
-                                        </Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
+                                        <Card.Body className="d-flex flex-column">
+                                            <Card.Title className="h6">{v.title}</Card.Title>
+                                            <Card.Text className="text-muted small" style={{ flex: 1 }}>{v.description}</Card.Text>
+                                            <div className="text-end">
+                                                <Button variant="outline-primary" size="sm" onClick={() => setPlaying(v.id)}>
+                                                    Xem ngay
+                                                </Button>
+                                            </div>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))}
+                        </Row>
+                    </section>
+                ))}
             </Container>
 
             <Modal show={!!playing} onHide={() => setPlaying(null)} size="lg" centered>
