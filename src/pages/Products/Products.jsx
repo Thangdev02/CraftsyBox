@@ -208,7 +208,10 @@ const Products = () => {
                                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                                     <h1 className="display-4 fw-bold mb-3 text-white">Craftsy Nest
                                     </h1>
-                                    <p className="lead text-light"> Mỗi bộ Craftsy Box là một hành trình nhỏ để bạn tự tay tạo nên, khám phá và cảm nhận văn hoá Việt, theo cách thú vị, an toàn và đầy cảm hứng.
+                                    <p className="lead text-light">
+                                        Mỗi bộ Craftsy Box là một hành trình nhỏ để bạn tự tay tạo nên, khám phá và cảm nhận văn hoá Việt,
+                                        <br />
+                                        theo cách thú vị, an toàn và đầy cảm hứng.
                                     </p>
                                 </motion.div>
                             </Col>

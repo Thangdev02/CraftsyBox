@@ -296,9 +296,19 @@ const Blog = () => {
         <div style={{ paddingTop: "100px", minHeight: "100vh" }}>
             <Container>
                 {/* Page Header */}
-                <section className="banner-section blog-banner mb-5">
-                    <div className="banner-overlay"></div>
-                    <Container className="h-100">
+                <section className="banner-section about-banner position-relative overflow-hidden rounded-4 mb-5">
+                    <div className="banner-overlay position-absolute w-100 h-100" style={{ zIndex: 1 }} />
+                    <div
+                        className="position-absolute w-100 h-100"
+                        style={{
+                            marginTop: "10px",
+                            backgroundImage: "url('/images/ảnh các trang còn lại.png')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            filter: "brightness(0.7)",
+                        }}
+                    />
+                    <Container className="h-100 position-relative" style={{ zIndex: 2 }}>
                         <Row className="h-100 align-items-center justify-content-center text-center">
                             <Col>
                                 <motion.div

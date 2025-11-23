@@ -66,7 +66,7 @@ const AboutUs = () => {
                         className="position-absolute w-100 h-100"
                         style={{
                             marginTop: "10px",
-                            backgroundImage: "url('/images/banner trang chủ.png')",
+                            backgroundImage: "url('/images/ảnh các trang còn lại.png')",
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                             filter: "brightness(0.7)",
@@ -283,13 +283,21 @@ const AboutUs = () => {
                 </Row>
 
                 {/* Call to Action */}
-                <section
-                    className="text-center text-white py-5 rounded-4 mt-5"
-                    style={{
-                        background: "linear-gradient(135deg, #f89b0a 0%, #eec37eff 100%)",
-                    }}
-                >
-                    <Container>
+                <section className="text-center text-white py-5 rounded-4 mt-5 position-relative overflow-hidden">
+                    <div
+                        className="position-absolute w-100 h-100"
+                        style={{
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            backgroundImage: "url('/images/ảnh các trang còn lại.png')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            zIndex: 0,
+                        }}
+                    />
+                    <Container className="position-relative" style={{ zIndex: 2 }}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
