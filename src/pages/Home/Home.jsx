@@ -73,6 +73,7 @@ const Home = () => {
                     <Row className="align-items-center min-vh-75">
                         <Col lg={6}>
                             <motion.div
+                                className="hero-content"
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}

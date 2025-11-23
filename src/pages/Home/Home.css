@@ -130,11 +130,12 @@
 
 /* Home hero/banner background using provided assets */
 .hero-section {
-  /* Use only the subtle repeating pattern for the home hero; remove the right-side illustration */
+  /* Use the full-width banner image without repeating and cover the area */
   background-image: url('/images/banner trang chủ.png');
-  background-repeat: repeat;
-  background-position: left top;
-  background-size: auto;
+  background-repeat: no-repeat;
+  /* shift the image further left and slightly up to emphasize left focal point */
+  background-position: -320px -20px;
+  background-size: cover;
   background-color: #f89b0a;
   /* fallback */
 }
@@ -146,12 +147,33 @@
   z-index: 2;
 }
 
+/* Hide floating decorative shapes inside hero for a cleaner banner */
+.hero-section .shape {
+  display: none !important;
+}
+
+/* Align hero content to the left and constrain width so heading and paragraph
+   have the same line-length for visual balance */
+.hero-section .container {
+  text-align: left;
+}
+
+.hero-section .hero-content {
+  max-width: 560px;
+  margin-left: 0;
+}
+
+.hero-section .hero-content h1,
+.hero-section .hero-content p.lead {
+  max-width: 560px;
+}
+
 @media (max-width: 991px) {
 
   /* Move main illustration below content on smaller screens */
   .hero-section {
-    background-position: center top, left top;
-    background-size: cover, auto;
+    background-position: -110px -20px;
+    background-size: cover;
   }
 
   .hero-section .shape-1 {
@@ -167,8 +189,8 @@
 
 @media (max-width: 576px) {
   .hero-section {
-    background-position: center top, center top;
-    background-size: cover, auto;
+    background-position: -70px -10px;
+    background-size: cover;
   }
 
   .hero-section .shape {
