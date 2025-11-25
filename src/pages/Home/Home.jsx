@@ -83,10 +83,17 @@ const Home = () => {
                                     <br />
                                     <span style={{ color: "#ffffff" }}> Khi di sản gõ nhẹ cửa trái tim sáng tạo</span>
                                 </h1>
-                                <p className="lead mb-4" style={{ fontSize: "1.2rem", opacity: 0.9 }}>
-                                    Khám phá bộ kit thủ công Craftsy Nest – nơi bạn cùng học, cùng tạo và kết nối với văn hoá Việt.
+                                <p className="lead " style={{ fontSize: "1.2rem", opacity: 0.9 }}>
+                                    Khám phá bộ kit thủ công Craftsy Nest – nơi bạn cùng học,
+
 
                                 </p>
+                                <p className="lead mb-4" style={{ fontSize: "1.2rem", opacity: 0.9 }}>
+                                    cùng tạo và kết nối với văn hoá Việt.
+
+
+                                </p>
+
                                 <div className="d-flex gap-3">
                                     <Link to="/products">
                                         <Button

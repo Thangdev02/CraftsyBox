@@ -131,10 +131,10 @@
 /* Home hero/banner background using provided assets */
 .hero-section {
   /* Use the full-width banner image without repeating and cover the area */
-  background-image: url('/images/banner trang chủ.png');
+  background-image: url('/images/ảnh 1.jpg');
   background-repeat: no-repeat;
   /* shift the image further left and slightly up to emphasize left focal point */
-  background-position: -320px -20px;
+  background-position: -260px -20px;
   background-size: cover;
   background-color: #f89b0a;
   /* fallback */
